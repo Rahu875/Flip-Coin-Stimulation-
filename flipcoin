@@ -1,14 +1,29 @@
-read -p "enter the no of flip: " n
-for ((i=0;i<n;i++))
+echo "coin is tossed multiple times"
+head=0
+tail=0
+while [ $head -le 21 ] && [ $tail -le 21 ]
 do
-FLIP=$(($((RANDOM%10))%2))
-if [ $FLIP -eq 1 ]
-then
-echo head
+flip=$(($RANDOM%2))
+echo "flip = " $flip
+if [[ $flip -eq 0 ]]
+then 
+echo "Head"
+head=$(( $head+1))
+echo "Head=" $head
 else
-echo tail
+echo "Tail"
+tail=$(($tail+1))
+echo "Tail=" $tail
 fi
 done
+if [ $head -eq 21 ]
+then
+echo "Head reached 21 times "
+elif [ $tail -eq 21 ]
+then 
+echo "Tail reached 21 times"
+fi
+
 
 
 
